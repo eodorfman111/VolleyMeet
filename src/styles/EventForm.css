@@ -1,97 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+import React, { useState } from 'react';
+import { db } from '../services/firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
+import '../styles/EventForm.css';
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+const EventForm = ({ selectedLocation, triggerRefresh }) => {
+  const [title, setTitle] = useState('');
+  const [specificLocation, setSpecificLocation] = useState('');
+  const [type, setType] = useState('beach');
+  const [gender, setGender] = useState('coed');
+  const [skillLevel, setSkillLevel] = useState('beginner'); // Add skill level state
+  const [eventDate, setEventDate] = useState('');
+  const [eventTime, setEventTime] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 20px;
-}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!selectedLocation) {
+      setErrorMessage('Please select a location on the map.');
+      return;
+    }
 
-.event-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    margin: 20px;
-}
+    try {
+      // Add the event to Firestore
+      await addDoc(collection(db, 'events'), {
+        title,
+        location: { lat: selectedLocation.lat, lng: selectedLocation.lng },
+        specificLocation,
+        type,
+        gender,
+        skillLevel, // Include skill level in the event data
+        date: eventDate,
+        time: eventTime,
+        icon: `/static/${type}Ball.png`,
+      });
 
-.event-form h2 {
-    font-size: 1.8rem;
-    color: #f57c00;
-    margin-bottom: 20px;
-    text-align: center;
-}
+      triggerRefresh();
 
-input, textarea, select, button {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    transition: all 0.3s ease-in-out;
-}
+      // Clear the form after submission
+      setTitle('');
+      setSpecificLocation('');
+      setType('beach');
+      setGender('coed');
+      setSkillLevel('beginner'); // Reset skill level
+      setEventDate('');
+      setEventTime('');
+    } catch (error) {
+      console.error('Error creating event:', error);
+      setErrorMessage('Failed to create event. Please try again.');
+    }
+  };
 
-input[type="text"], textarea, select {
-    width: 100%;
-    box-sizing: border-box;
-}
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Event Title"
+        required
+      />
+      <textarea
+        value={specificLocation}
+        onChange={(e) => setSpecificLocation(e.target.value)}
+        placeholder="Specific Location (e.g., Court 1)"
+        required
+      />
+      <select value={type} onChange={(e) => setType(e.target.value)}>
+        <option value="beach">Beach Volleyball</option>
+        <option value="indoor">Indoor Volleyball</option>
+        <option value="grass">Grass Volleyball</option>
+      </select>
+      <select value={gender} onChange={(e) => setGender(e.target.value)}>
+        <option value="coed">Coed</option>
+        <option value="male">Men's</option>
+        <option value="female">Women's</option>
+      </select>
+      {/* Add skill level dropdown */}
+      <select value={skillLevel} onChange={(e) => setSkillLevel(e.target.value)}>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+      <input
+        type="date"
+        value={eventDate}
+        onChange={(e) => setEventDate(e.target.value)}
+        required
+      />
+      <input
+        type="time"
+        value={eventTime}
+        onChange={(e) => setEventTime(e.target.value)}
+        required
+      />
+      <button type="submit">Create Event</button>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+    </form>
+  );
+};
 
-
-textarea {
-    resize: none; 
-}
-
-input:focus, textarea:focus, select:focus {
-    border-color: #f57c00;
-    outline: none;
-    box-shadow: 0 0 5px rgba(245, 124, 0, 0.5);
-}
-
-button {
-    background-color: #f57c00;
-    color: white;
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-    background-color: #ef6c00;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-.form-section {
-    width: 100%;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 10px;
-}
-
-.form-section:last-child {
-    border: none; 
-}
-
-body {
-    background: linear-gradient(135deg, #f3f4f7, #ffffff);
-}
+export default EventForm;

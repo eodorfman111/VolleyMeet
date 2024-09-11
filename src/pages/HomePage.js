@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Map from '../components/Map';
 import EventForm from '../components/EventForm';
 import '../styles/HomePage.css';
@@ -17,24 +16,15 @@ const HomePage = () => {
       <p className="sub-heading">To get started, set a pin on the map below and click Create Event!</p>
       <div className="content-container">
         <EventForm selectedLocation={selectedLocation} triggerRefresh={triggerRefresh} />
-        <Map 
-          onLocationSelect={setSelectedLocation} 
-          selectedLocation={selectedLocation} 
-          eventType={refresh ? 'refresh' : 'default'} 
-          refresh={refresh} 
-        />
+        <div className="map-container"> {}
+          <Map 
+            onLocationSelect={setSelectedLocation} 
+            selectedLocation={selectedLocation} 
+            eventType={refresh ? 'refresh' : 'default'} 
+            refresh={refresh} 
+          />
+        </div>
       </div>
-            <div className="content-container">
-  <EventForm selectedLocation={selectedLocation} triggerRefresh={triggerRefresh} />
-  <div className="map-container"> {/* Add a className for map container */}
-    <Map 
-      onLocationSelect={setSelectedLocation} 
-      selectedLocation={selectedLocation} 
-      eventType={refresh ? 'refresh' : 'default'} 
-      refresh={refresh} 
-    />
-  </div>
-</div>
     </div>
   );
 };

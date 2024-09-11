@@ -24,6 +24,17 @@ const HomePage = () => {
           refresh={refresh} 
         />
       </div>
+            <div className="content-container">
+  <EventForm selectedLocation={selectedLocation} triggerRefresh={triggerRefresh} />
+  <div className="map-container"> {/* Add a className for map container */}
+    <Map 
+      onLocationSelect={setSelectedLocation} 
+      selectedLocation={selectedLocation} 
+      eventType={refresh ? 'refresh' : 'default'} 
+      refresh={refresh} 
+    />
+  </div>
+</div>
     </div>
   );
 };

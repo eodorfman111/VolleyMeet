@@ -47,6 +47,24 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 2px solid #f57c00; 
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+input:focus, textarea:focus, select:focus {
+    border-color: #ef6c00; /* Darker orange when focused */
+    box-shadow: 0 0 5px rgba(245, 124, 0, 0.5); /* Subtle glow effect */
+    outline: none; /* Remove the default outline */
+}
+
 .back-button {
     background-color: #f57c00;
     color: white;

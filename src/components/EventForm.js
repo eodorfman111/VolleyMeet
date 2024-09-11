@@ -10,6 +10,7 @@ const EventForm = ({ selectedLocation, triggerRefresh }) => {
   const [gender, setGender] = useState('coed');
   const [eventDate, setEventDate] = useState('');
   const [eventTime, setEventTime] = useState('');
+  const [skillLevel, setSkillLevel] = useState('beginner'); 
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
@@ -29,19 +30,20 @@ const EventForm = ({ selectedLocation, triggerRefresh }) => {
         gender,
         date: eventDate,
         time: eventTime,
-        icon: `/static/${type}Ball.png`, 
+        skillLevel, 
+        icon: `/static/${type}Ball.png`,
       });
 
-      
       triggerRefresh();
 
-     
+      // Reset form
       setTitle('');
       setSpecificLocation('');
       setType('beach');
       setGender('coed');
       setEventDate('');
       setEventTime('');
+      setSkillLevel('beginner');
     } catch (error) {
       console.error('Error creating event:', error);
       setErrorMessage('Failed to create event. Please try again.');
@@ -72,6 +74,11 @@ const EventForm = ({ selectedLocation, triggerRefresh }) => {
         <option value="coed">Coed</option>
         <option value="male">Men's</option>
         <option value="female">Women's</option>
+      </select>
+      <select value={skillLevel} onChange={(e) => setSkillLevel(e.target.value)}> {/* New skill level dropdown */}
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
       </select>
       <input
         type="date"

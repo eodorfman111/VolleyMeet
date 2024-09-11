@@ -72,7 +72,7 @@ const EventForm = ({ selectedLocation, triggerRefresh }) => {
       </select>
       <select value={gender} onChange={(e) => setGender(e.target.value)}>
         <option value="coed">Coed</option>
-        <option value="male">Men's</option>
+        <option value="mens">Men's</option>
         <option value="female">Women's</option>
       </select>
       <select value={skillLevel} onChange={(e) => setSkillLevel(e.target.value)}> {/* New skill level dropdown */}

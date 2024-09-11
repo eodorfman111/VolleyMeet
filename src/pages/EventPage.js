@@ -54,6 +54,7 @@ const EventPage = () => {
       <div className="event-details">
         <p className="event-date"><strong>Date:</strong> {event.date}</p>
         <p className="event-time"><strong>Time:</strong> {event.time}</p>
+        <p><strong>Skill Level:</strong> {event.skillLevel}</p>
         <p><strong>Specific Location:</strong> {event.specificLocation}</p>
         <p><strong>Type:</strong> {event.type} Volleyball</p>
         <p><strong>Gender:</strong> {event.gender}</p>

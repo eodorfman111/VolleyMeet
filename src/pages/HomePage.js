@@ -1,6 +1,7 @@
 import Map from '../components/Map';
 import EventForm from '../components/EventForm';
 import '../styles/HomePage.css';
+import React, { useState } from 'react';
 
 const HomePage = () => {
   const [selectedLocation, setSelectedLocation] = useState({ lat: 0, lng: 0 });

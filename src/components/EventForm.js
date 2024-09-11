@@ -21,7 +21,7 @@ const EventForm = ({ selectedLocation, triggerRefresh }) => {
     }
 
     try {
-      // Add the event to Firestore
+      
       await addDoc(collection(db, 'events'), {
         title,
         location: { lat: selectedLocation.lat, lng: selectedLocation.lng },

@@ -20,16 +20,16 @@ body {
 
 h1 {
     font-size: 2.8rem;
-    color: #333;
+    color: #fff; /* Make header white */
     margin-bottom: 20px;
     font-weight: 700;
     text-align: center;
     letter-spacing: 1px;
-    background-color: #fff;
-    padding: 20px; 
-    border-radius: 12px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    display: inline-block; 
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); /* Cool shadow effect */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background effect */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Box-shadow to make it stand out */
 }
 
 .sub-heading {
@@ -46,12 +46,6 @@ h1 {
     gap: 20px; 
     align-items: flex-start;
     width: 100%;
-}
-
-h1 {
-  margin-top: 20px;
-  font-size: 2.5rem;
-  color: #333;
 }
 
 @media (max-width: 768px) {

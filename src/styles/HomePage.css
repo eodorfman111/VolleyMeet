@@ -25,6 +25,11 @@ h1 {
     font-weight: 700;
     text-align: center;
     letter-spacing: 1px;
+    background-color: #fff;
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: inline-block; 
 }
 
 .sub-heading {

@@ -9,7 +9,13 @@ body {
     line-height: 1.6;
 }
 
-
+.homepage-container {
+    max-width: 100%; 
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: transparent; 
+    border-radius: 0;
+    box-shadow: none; 
 }
 
 h1 {
@@ -35,12 +41,6 @@ h1 {
     gap: 20px; 
     align-items: flex-start;
     width: 100%;
-}
-.homepage-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
 h1 {
@@ -72,27 +72,16 @@ h1 {
   }
 }
 
-.event-form {
-    background-color: #ffffff;
-    padding: 30px;  
+.event-form, .map-container {
+    background-color: rgba(255, 255, 255, 0.85); 
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.3s ease;
 }
 
-.event-form:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-.map-container {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-}
-
-.map-container:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+.event-form:hover, .map-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
 }
 
 button {

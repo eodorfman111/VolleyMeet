@@ -6,7 +6,7 @@ const About = () => {
     <div className="about-container">
       <h1>About Volleymeet</h1>
       <p>
-        Volleymeet is a platform designed for volleyball enthusiasts to easily create and join volleyball events. It was developed to simplify the process of connecting players, organizing games, and bringing the volleyball community closer together.
+        Volleymeet is a platform designed by Leo Dorfman for volleyball enthusiasts to easily create and join volleyball events. It was developed to simplify the process of connecting players, organizing games, and bringing the volleyball community closer together.
       </p>
       <p>
         This web application was built using React for the front-end, providing a fast and interactive user experience. For managing and storing event data, Volleymeet integrates with Firebase Firestore, offering real-time database updates, secure authentication, and data storage.

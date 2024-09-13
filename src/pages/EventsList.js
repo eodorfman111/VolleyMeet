@@ -1,29 +1,58 @@
-import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../services/firebaseConfig';
 
-const EventsList = () => {
-  const [events, setEvents] = useState([]);
+.events-list-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const querySnapshot = await getDocs(collection(db, 'events'));
-      const eventData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setEvents(eventData);
-    };
-    fetchEvents();
-  }, []);
 
-  return (
-    <div className="events-list-container">
-      <h1>Events</h1>
-      <ul>
-        {events.map(event => (
-          <li key={event.id}>{event.title} - {event.date}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
 
-export default EventsList;
+
+.event-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.event-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.event-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+
+.event-details {
+  text-align: left;
+}
+
+.event-title {
+  font-size: 1.5rem;
+  color: #f57c00;
+  margin-bottom: 10px;
+}
+
+.gender-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.event-date-time {
+  font-size: 1rem;
+  color: #666;
+}

@@ -21,6 +21,11 @@
     font-size: 1.8rem;
     font-weight: bold;
 }
+.navbar-favicon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px; 
+}
 
 .navbar-links {
     list-style: none;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Navbar.css'; // Make sure this file exists
+import '../styles/Navbar.css'; 
 import favicon from '../static/favicon.png'; 
 
 const Navbar = () => {
